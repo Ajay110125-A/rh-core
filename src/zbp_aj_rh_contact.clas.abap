@@ -1,0 +1,5 @@
+CLASS zbp_aj_rh_contact DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zaj_r_contacttp.
+ENDCLASS.
+
+CLASS zbp_aj_rh_contact IMPLEMENTATION.
+ENDCLASS.
