@@ -12,7 +12,7 @@ ENDCLASS.
 
 
 
-CLASS zcl_aj_initial_data IMPLEMENTATION.
+CLASS ZCL_AJ_INITIAL_DATA IMPLEMENTATION.
 
 
   METHOD if_oo_adt_classrun~main.

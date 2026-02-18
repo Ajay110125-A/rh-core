@@ -1,5 +1,8 @@
 @EndUserText.label: 'Contact Service'
 @ObjectModel.leadingEntity.name: 'ZAJ_C_ContactTP'
 define service ZAJ_Contact {
-  expose ZAJ_C_ContactTP as Contact;
+  expose ZAJ_C_ContactTP     as Contact;
+  expose ZAJ_B_ContactIdVH   as ContactID;
+  expose ZAJ_I_ContactTypeVH as ContactType;
+  expose I_CountryVH         as Country;
 }

@@ -15,6 +15,7 @@ etag master LocalLastChangedAt
   delete;
 
   field ( readonly ) ContactId;
+  field ( features : instance ) Country;
 
   draft action Edit;
   draft action Activate optimized;
