@@ -12,7 +12,7 @@ ENDCLASS.
 
 
 
-CLASS ZCL_AJ_INITIAL_DATA IMPLEMENTATION.
+CLASS zcl_aj_initial_data IMPLEMENTATION.
 
 
   METHOD if_oo_adt_classrun~main.
@@ -50,6 +50,25 @@ CLASS ZCL_AJ_INITIAL_DATA IMPLEMENTATION.
     DELETE FROM zaj_rh_contact.
 
     INSERT zaj_rh_contact FROM TABLE @lt_contact.
+
+
+    DATA : li_user_ids TYPE STANDARD TABLE OF ZAJ_I_UserVH.
+
+    TRY.
+        li_user_ids = VALUE #(
+                                (
+                                  userid = cl_abap_context_info=>get_user_technical_name( )
+                                  personfullname = 'Ajay'
+                                  defaultemailaddress = 'amgothajay@gmail.com'
+                                )
+                             ).
+      CATCH cx_abap_context_info_error.
+        "handle exception
+    ENDTRY.
+
+    DELETE FROM ZAJ_I_UserVH.
+
+    INSERT ZAJ_I_UserVH FROM TABLE @li_user_ids.
 
 
 
