@@ -5,7 +5,8 @@
                   title: { value: 'ContactId' },
                   description: { value: 'ContactTypeId' }
                 }
-                
+@UI.headerInfo.typeImageUrl: #( ContactTypeIcon )
+
 annotate entity ZAJ_C_ContactTP with
 {
 
@@ -52,13 +53,19 @@ annotate entity ZAJ_C_ContactTP with
                 position: 30,
                 type: #FIELDGROUP_REFERENCE,
                 label: 'Digital Address',
-                targetQualifier: 'DIGITAl'
+                targetQualifier: 'DIGITAl',
+                hidden: #( isHiddenDigiAddress )
               }
 
              ]
 
   @UI.selectionField: [{ position: 10 }]
-  @UI.lineItem: [{ position: 10 }]
+  @UI.lineItem: [
+                  { position: 10 },
+                  { type: #FOR_ACTION, dataAction: 'createAddress', label: 'Create Address' },
+                  { type: #FOR_ACTION, dataAction: 'createCustomer', label: 'Create Customer' },
+                  { type: #FOR_ACTION, dataAction: 'createEmployee', label: 'Create Employee' }
+  ]
   @UI.identification: [{  position: 10, qualifier: 'GENERAL' }]
   ContactId;
 
@@ -75,7 +82,7 @@ annotate entity ZAJ_C_ContactTP with
   @UI.fieldGroup: [{ position: 20, qualifier: 'PERSON' }]
   LastName;
 
-  @UI.fieldGroup: [{ position: 30, qualifier: 'PERSON' }]
+  @UI.fieldGroup: [{ position: 30, qualifier: 'PERSON', hidden: #( isHiddenBirthday ) }]
   Birthday;
 
   @UI.fieldGroup: [{ position: 10, qualifier: 'ADR' }]
@@ -96,10 +103,10 @@ annotate entity ZAJ_C_ContactTP with
   @UI.fieldGroup: [{ position: 50, qualifier: 'ADR' }]
   Country;
 
-  @UI.fieldGroup: [{ position: 10, qualifier: 'DIGITAl' }]
+  @UI.fieldGroup: [{ position: 10, qualifier: 'DIGITAl', hidden: #( isHiddenTelephone ) }]
   Telephone;
 
-  @UI.fieldGroup: [{ position: 20, qualifier: 'DIGITAl' }]
+  @UI.fieldGroup: [{ position: 20, qualifier: 'DIGITAl', hidden: #( isHiddenEmail ) }]
   Email;
 
   @UI.fieldGroup: [{ position: 10, qualifier: 'HEAD_USER' }]
@@ -116,5 +123,20 @@ annotate entity ZAJ_C_ContactTP with
 
   @UI.hidden: true
   LastChangedAt;
+
+  @UI.hidden: true
+  ContactTypeIcon;
+
+  @UI.hidden: true
+  isHiddenTelephone;
+
+  @UI.hidden: true
+  isHiddenEmail;
+
+  @UI.hidden: true
+  isHiddenBirthday;
+
+  @UI.hidden: true
+  isHiddenDigiAddress;
 
 }

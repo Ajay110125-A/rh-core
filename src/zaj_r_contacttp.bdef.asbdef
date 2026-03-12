@@ -3,6 +3,8 @@ strict ( 2 );
 
 with draft;
 
+auxiliary class zcl_aj_rh_contact_behavior;
+
 define behavior for ZAJ_R_CONTACTTP alias Contact
 persistent table zaj_rh_contact
 draft table zaj_rh_contact_d
@@ -23,10 +25,14 @@ etag master LocalLastChangedAt
   draft action Resume;
   draft determine action Prepare;
 
+  static factory action ( authorization : global ) createAddress [1];
+  static factory action ( authorization : global ) createCustomer [1];
+  static factory action ( authorization : global ) createEmployee [1];
+
   mapping for zaj_rh_contact
     {
       ContactId          = contact_id;
-      ContactTypeId        = contact_type;
+      ContactTypeId      = contact_type;
       FirstName          = first_name;
       LastName           = last_name;
       Birthday           = birthday;
